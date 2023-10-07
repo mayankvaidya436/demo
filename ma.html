@@ -6,7 +6,23 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form onsubmit="savetolocalStorage(event)" >
+        <label >Name</label>
+        <input type="text" name="username">
+        <label >email</label>
+        <input type="email" name="email">
+        <button>submit</button>
+    </form>
 </body>
-<script src="ma.js"></script>
+<script >
+    function savetolocalStorage(event){
+        event.preventDefault();
+        const name=event.target.username.value;
+        const email=event.target.email.value;
+        localStorage.setItem('name',name);
+        localStorage.setItem('email',email);
+
+    }
+
+</script>
 </html>
