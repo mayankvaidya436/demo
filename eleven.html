@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oject</title>
+</head>
+<body>
+    <h1>local storage in object </h1>
+</body>
+<script>
+    let obj={
+        name:"maynk",
+        age:22
+
+    };
+    let a=JSON.stringify(obj);
+   localStorage.setItem("obj",a);
+   console.log(localStorage);
+</script>
+</html>
