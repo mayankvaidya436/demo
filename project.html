@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js project</title>
+</head>
+<body>
+    <form onclick="mayank(event)" >
+        <label>choose expanseamount</label>
+        <input type="number" name="username" id="amo">
+        <label>choose description</label>
+        <input type="text" name="des" id="desc">
+        <label>choose a categroy</label>
+        <input type="text" name="cat" id="cata">
+        <button id="but">add experince</button>
+    </form>
+    <ul></ul>
+</body>
+<script>
+    
+    function mayank(event){
+        event.preventDefault();
+        var name=event.target.username.value;
+        var des=event.target.des.value;
+        var cat=event.target.cat.value;
+        const obj={  
+            name:name,
+            des:des,
+            cat:cat
+
+        };
+        localStorage.setItem("name",JSON.stringify(obj));
+    }
+
+</script>
+</html>

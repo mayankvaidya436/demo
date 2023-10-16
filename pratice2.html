@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <form  onsubmit="mayank(event)">
+        <label >choose expanseamount</label>
+        <input type="number" name="username" id="may">
+        <label >choose description</label>
+        <input type="text" name="email" id="maya">
+        <label >choose a categroy</label>
+        <input type="text" name="cat" id="cata">
+        <button>add experince</button>
+        <ul id="list"></ul>
+    </form>
+</body>
+<script>
+    function mayank(event){
+        event.preventDefault();
+        var name=event.target.username.value;
+        var email=event.target.email.value;
+        const obj={  
+            name:name,
+            email:email
+
+        };
+        localStorage.setItem("name",JSON.stringify(obj));
+        localStorage.setItem("email",email);
+       show(obj);
+    }
+     function show(obj)
+     { var a=document.getElementById("list");
+          var li=document.createElement("li");
+          li.textContent=obj.name+" "+ obj.email;
+        a.appendChild(li);
+        var btn=document.createElement("button");
+        btn.textContent="Delete expencise";
+        li.appendChild(btn);
+        btn.onclick=()=>{
+            a.removeChild(li);
+        }
+        var edit=document.createElement("button")
+        edit.textContent="edit expencise";
+        li.appendChild(edit);
+        edit.onclick=()=>{
+            a.removeChild(li);
+            document.getElementById("may").value=obj.name;
+            document.getElementById("maya").value=obj.email;
+        }    
+
+     }
+
+   
+
+</script>
+</html>
