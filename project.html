@@ -6,7 +6,7 @@
     <title>js project</title>
 </head>
 <body>
-    <form onclick="mayank(event)" >
+    <form id="forms" >
         <label>choose expanseamount</label>
         <input type="number" name="username" id="amo">
         <label>choose description</label>
@@ -15,23 +15,7 @@
         <input type="text" name="cat" id="cata">
         <button id="but">add experince</button>
     </form>
-    <ul></ul>
+    <ul id="list"></ul>
 </body>
-<script>
-    
-    function mayank(event){
-        event.preventDefault();
-        var name=event.target.username.value;
-        var des=event.target.des.value;
-        var cat=event.target.cat.value;
-        const obj={  
-            name:name,
-            des:des,
-            cat:cat
-
-        };
-        localStorage.setItem("name",JSON.stringify(obj));
-    }
-
-</script>
+<script src="project.js"></script>
 </html>

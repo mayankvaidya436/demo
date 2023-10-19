@@ -9,17 +9,32 @@
     <h1>hekko</h1>
 </body>
 <script>
-   const obj1= {
+   
+   const timer1 = setTimeout(() => {
 
-"key1": "value1",
+console.log('timer1');
 
-"key2" : "value2",
 
-"key3" : "value3"
 
-}
+const promise1 = Promise.resolve().then(() => {
 
-const obj2 = { ...obj1	, "key3": "new value"}
+  console.log('promise1')
+
+})
+
+}, 0)
+
+
+
+const timer2 = setTimeout(() => {
+
+console.log('timer2')
+
+}, 0)
+
+
+
+console.log('end');
 
 
 
