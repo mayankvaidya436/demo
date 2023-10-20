@@ -60,13 +60,13 @@
           li.textContent=obj.name+" "+ obj.email;
         a.appendChild(li);
         var btn=document.createElement("button");
-        btn.textContent="Delete expencise";
+        btn.textContent="Delete";
         li.appendChild(btn);
         btn.onclick=()=>{
             a.removeChild(li);
         }
         var edit=document.createElement("button")
-        edit.textContent="edit expencise";
+        edit.textContent="edit";
         li.appendChild(edit);
         edit.onclick=()=>{
             a.removeChild(li);
