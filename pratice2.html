@@ -18,6 +18,8 @@
         <input type="text" name="cat" id="cata">
         <button>add experince</button>
         <ul id="list"></ul>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
+
     </form>
 </body>
 <script>
@@ -30,9 +32,15 @@
             email:email
 
         };
-        localStorage.setItem("name",JSON.stringify(obj));
-        localStorage.setItem("email",email);
-       show(obj);
+        axios.post("https://crudcrud.com/api/4769662652a945868676e722688affea/data",obj)
+        .then((response)=>{
+            show(response.data);
+            console.log(response);
+        })
+        .catch((err)=>{console.log(err)})
+       // localStorage.setItem("name",JSON.stringify(obj));
+        //localStorage.setItem("email",email);
+       //show(obj);
     }
      function show(obj)
      { var a=document.getElementById("list");
