@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>expense tracker app</title>
+</head>
+<body>
+    <form id="forms">
+        <label >Choose Expense Amount:</label>
+        <input type="number" name="Amount" id="Amount">
+        <label>Choose Description:</label>
+        <input type="text" name="desc" id="desc">
+        <label>Choose Category:</label>
+        <select name="Category" id="Category">
+            <option value="fuel">fuel</option>
+            <option value="food">food</option>
+            <option value="moives">moives</option>
+            <option value="bikes">bikes</option>
+        </select>
+        <button id="sub">submit</button>
+    </form>
+    <ul id="list"></ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js "></script>
+</body>
+<script src="project3hrs.js"></script>
+</html>
