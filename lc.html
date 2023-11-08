@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios</title>
+</head>
+<body>
+    <form onsubmit="save(event)">
+        <label >Name</label>
+        <input type="text" name="name" id="name">
+        <label >Email</label>
+        <input type="email" name="email" id="email">
+        <label >Number</label>
+        <input type="number" name="number" id="number">
+        <button>submit</button>
+    </form>
+    <ul id="list"></ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"></script>
+    <script>
+        function save(event)
+        {
+            event.preventDefault();
+        
+            const name=event.target.name.value;
+            const email=event.target.email.value;
+            const number=event.target.number.value;
+            const obj={
+                name,
+                email,
+                number
+            }
+            axios.post("https://crudcrud.com/api/4a46077ab0804339aef8b465ce59d012/app",obj)
+            .then((Response)=>{
+                show(Response.data)
+                console.log(Response)}
+                )
+            .catch((error)=>{
+                console.log(error);
+            })
+            axios.get("https://crudcrud.com/api/4a46077ab0804339aef8b465ce59d012/app")
+            .then((Response)=>{
+                console.log(Response);
+                for(var i=0;i<Response.data.length;i++)
+                {
+                    show(Response.data[i]);
+                }
+            })
+            .catch((error)=>{
+            console.log(error);
+            })
+            //localStorage.setItem("email",JSON.stringify(obj));
+            //localStorage.setItem("email",email);
+            //localStorage.setItem("number",number);
+           // show(obj);
+        }
+        function show(obj){
+            
+            const ul=document.getElementById("list");
+            const li=document.createElement("li");
+            li.textContent=obj.name+"-"+obj.email+"-"+obj.number;
+            ul.appendChild(li);
+            const del=document.createElement("button");
+            del.textContent="Delete";
+            li.appendChild(del);
+            del.onclick=(userid)=>{
+                axios.delete('https://crudcrud.com/api/4a46077ab0804339aef8b465ce59d012/app/${userid}')
+                .then((Response)=>{
+                
+                })
+                .catch((error)=>{
+                    console.log(error);
+                })
+                localStorage.removeItem(obj.email);
+                ul.removeChild(li);
+
+            }
+            const edit=document.createElement("button");
+            edit.textContent="Edit";
+            li.appendChild(edit);
+            edit.onclick=()=>{
+                localStorage.removeItem(obj.email);
+                ul.removeChild(li);
+                document.getElementById("name").value=obj.name;
+                document.getElementById("email").value=obj.email;
+                document.getElementById("number").value=obj.number;
+            }
+
+            }
+        
+        
+    </script>
+</body>
+</html>

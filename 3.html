@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3project</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+            Expense Tracker App
+            </div>
+        </div>
+        <div class="container my-2">
+            <form action="/main.html" id="my-form" onsubmit="local(event)">
+                <div class="my-2">
+                    <label for="number">Choose Expense Amount: </label>
+                    <input type="number" id="amount" name="quantity" >
+                
+
+                
+                    <label for="text">Choose Description: </label>
+                    <input type="text" id="desc" name="desc">
+                
+
+                
+                    <label for="text">Choose Category:</label>
+                    <select name="category" id="category">
+                        <option value="Fuel">Fuel</option>
+                        <option value="Food">Food</option>
+                        <option value="Electricity">Electricity</option>
+                        <option value="Movies">Movies</option>
+                    </select>
+               
+
+                <button type="submit" >submit</button>
+            </div>
+            </form>
+
+            <ul class="items" id="items">
+
+            </ul>
+        </div>
+    </div>
+    <script>
+        function local(event){
+            event.preventDefault();
+            const amount=event.target.quantity.value;
+            const desc=event.target.desc.value;
+            const cat=event.target.category.value;
+            const obj={
+                amount,
+                desc,
+                cat
+            }
+            localStorage.setItem("data",JSON.stringify(obj));
+            show(obj);
+
+        }
+        function show(obj){
+            const ul=document.getElementById("items");
+            const li=document.createElement("li");
+            li.textContent=obj.amount+"-"+obj.desc+"-"+obj.cat;
+            ul.appendChild(li);
+            const del=document.createElement("button");
+            del.textContent="Delete";
+            li.appendChild(del);
+            del.onclick=()=>{
+                localStorage.removeItem(obj.data);
+                ul.removeChild(li);
+
+            }
+        
+        const edit=document.createElement("button");
+            edit.textContent="Edit";
+            li.appendChild(edit);
+            edit.onclick=()=>{
+                localStorage.removeItem(obj.data);
+                ul.removeChild(li);
+                document.getElementById("amount").value=obj.amount;
+                document.getElementById("desc").value=obj.desc;
+                document.getElementById("category").value=obj.cat;
+            }
+        }
+
+    </script>
+</body>
+</html>
